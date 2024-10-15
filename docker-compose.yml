@@ -3,14 +3,14 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-    image: docuseal/docuseal:latest
+    image: bohni-coders/bonisign-v1:latest
     ports:
       - 3000:3000
     volumes:
-      - ./docuseal:/data/docuseal
+      - ./bonisign:/data/bonisign
     environment:
       - FORCE_SSL=${HOST}
-      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/docuseal
+      - DATABASE_URL=postgresql://postgres:postgres@postgres:5432/bonisign
 
   postgres:
     image: postgres:15
@@ -19,7 +19,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: docuseal
+      POSTGRES_DB: bonisign
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 5s
