@@ -3,7 +3,7 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-    image: bohni-coders/bonisign-v1:latest
+    image: bonitech/bonisign-v1:latest
     ports:
       - 3000:3000
     volumes:
